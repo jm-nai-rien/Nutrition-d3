@@ -1,0 +1,106 @@
+html {
+    box-sizing: border-box;
+  }
+
+body {
+    background-color: #FD7FCC;
+    margin: 1rem;
+    font-family: sans-serif;
+    line-height: 1.5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.webgl {
+    position: fixed;
+    top: 0;
+    left: 0;
+    outline: none;
+  }
+
+  
+h1 {
+    margin-bottom: 0px;
+}
+
+h1, h2, h3, ul, p {
+    color: #292929;
+}
+
+.threejswork{
+    display: flex;
+    align-content: center;
+    align-items: stretch;
+    justify-content: center;
+    margin: 5%;
+  }
+
+.search-place {
+    /* margin-top: 10%; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: 10%;
+}
+
+.headline {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.search-container {
+    position: relative;
+  }
+
+#recipe-name {
+    min-width: 250px;
+    padding: 10px 20px;
+    border-radius: 1rem;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    background: white;
+    border-width: 0.5px;
+    border-radius: 1rem;
+    border-color: rgb(186, 186, 186);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.109);
+    max-height: 200px;
+    overflow-y: auto;
+  }
+  
+ .dropdown-menu div {
+    padding: 5px;
+    cursor: pointer;
+  }
+  
+.dropdown-menu div:hover {
+    background-color: #f0f0f0;
+  }
+  
+.hidden {
+    display: none;
+  }
+
+#get-nutrition-btn {
+    padding: 10px 20px;
+    border-radius: 1rem;
+    color: rgb(26, 26, 26);
+   }
+
+#nutrition-chart {
+    border-color: black;
+    border-width: 1px;
+    margin-top: 2rem;
+    background-color: #f0f0f0;
+    border-radius: 1rem;
+}

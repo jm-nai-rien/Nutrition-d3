@@ -4,17 +4,41 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nutrition Search</title>
-  <link rel="stylesheet" href="styles.css">
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.151.3/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.151.3/examples/jsm/"
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <h1>Search for Recipe Nutrition by Name</h1>
-  <input type="text" id="recipe-name" placeholder="Enter Recipe Name">
-  <button id="search-button">Get Nutrition</button>
-  <div id="results-container"></div>
-  <script src="https://d3js.org/d3.v7.min.js"></script>
-  <script src="app.js"></script>
 
-  <div id="charts-container"></div>
-  <svg id="nutrition-chart" width="400" height="400" style="border: 1px solid;"></svg>
+<body>
+  <canvas class="webgl" data-engine="three.js r140" width="1246" height="1526" style="width: 623px; height: 763px;"></canvas>  <div class="search-place"> 
+    
+    <div class="headline">
+      <h1>Search for Recipe</h1>
+      <p>Check Out the Nutrition Value and Ingredients!</p>
+    </div>
+    
+    <div class="search-container">
+      <input type="text" id="recipe-name" placeholder="Search for a recipe...">
+      <div id="recipe-dropdown" class="hidden dropdown-menu"></div>
+      <button id="get-nutrition-btn">Get Nutrition</button>
+    </div>
+    <div id="results-container"></div>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <div id="charts-container"></div>
+    <svg id="nutrition-chart" width="500" height="500" style="border: 1px solid;"></svg>
+  </div>
+  
+  <div class="threejswork">
+    <script type="module" src="/three.js"></script>
+  </div>
+  
 </body>
+
 </html>
