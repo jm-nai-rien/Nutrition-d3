@@ -9,7 +9,7 @@ async function fetchRecipes(query) {
   const options = {
     method: 'GET',
     headers: {
-      // 'X-RapidAPI-Key': '35c93bcd3bmsh812505908d611c5p1eee90jsn7b90d749f044',
+      'X-RapidAPI-Key': '35c93bcd3bmsh812505908d611c5p1eee90jsn7b90d749f044',
       'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
     }
   };

@@ -3,16 +3,21 @@ import {FontLoader} from 'three/addons/loaders/FontLoader.js';
 import {TextGeometry} from 'three/addons/geometries/TextGeometry.js';
 import {OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
-
-
 const scene = new THREE.Scene();
-scene.background = new THREE.Color( 0xFD7FCC );
+scene.background = new THREE.Color( 0x181818 );
 const camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 0.1, 1000 );
 let textMesh;
 
 const renderer = new THREE.WebGLRenderer();
-renderer.setSize( window.innerWidth*0.5, window.innerHeight*0.5 );
+renderer.setSize( window.innerWidth, window.innerHeight );
 
+function onWindowResize() {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+}
+
+window.addEventListener('resize', onWindowResize, false);
 
 const container = document.querySelector('.threejswork');
 container.appendChild(renderer.domElement);
@@ -44,7 +49,7 @@ const maxRadius = Math.sqrt(centerX * centerX + centerY * centerY);
 
 const gradient = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, maxRadius);
 gradient.addColorStop(0, "#FD935A");
-gradient.addColorStop(0.5, "#FD7FCC");
+gradient.addColorStop(0.5, "#181818");
 
 ctx.fillStyle = gradient;
 ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -57,8 +62,6 @@ const gradientMaterial = new THREE.MeshBasicMaterial({ map: texture, });
 const mesh = new THREE.Mesh(planeGeometry, gradientMaterial);
 mesh.position.set(0, 0, -10); // Position the plane behind your scene objects
 scene.add(mesh);
-// const secondMesh = new THREE.Mesh(planeGeometry, gradientMaterial);
-// scene.add(secondMesh);
 //<!------------ PLANEEnd----------------->
 
 // Render loop required
@@ -77,17 +80,15 @@ loader.load('https://threejs.org/examples/fonts/helvetiker_regular.typeface.json
 
   const material = new THREE.MeshNormalMaterial({ 
     wireframe: false, // Set to true if you want to display the wireframe
-    flatShading: true, // Set to true for flat shading, false for smooth shading
+    flatShading: false, // Set to true for flat shading, false for smooth shading
     color: 0xc94477
 });
 
 textMesh = new THREE.Mesh(geometry, material);
 scene.add(textMesh);
   
-    textMesh = new THREE.Mesh(geometry, material);
+textMesh = new THREE.Mesh(geometry, material);
   scene.add(textMesh);
-  // geometry.computeBoundingBox();
-  // geometry.boundingBox.getCenter(mesh.position).multiplyScalar(-1);
 
 
   //add edge line
@@ -107,13 +108,6 @@ scene.add(textMesh);
   const animate = function () {
     requestAnimationFrame(animate);
     controls.update();
-    // if (textMesh) {
-    //   textMesh.rotation.x += 0.01;
-    //   textMesh.rotation.y += 0.01;
-    //   // textMesh.add(edgeLines);
-    //   // textMesh.position.x += 0.01;
-    //   // textMesh.position.y += 0.01;
-    // }
     
     renderer.render(scene, camera);
   };
