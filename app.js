@@ -40,31 +40,42 @@ async function getNutritionById(id) {
   }
 }
 
-function displayResult(recipe, nutrition) {
-  resultsContainer.innerHTML = `
-    <h2>${recipe.title}</h2>
-    <h3>Nutrition Values</h3>
-    <p>Calories: ${nutrition.calories}</p>
-    <p>Fat: ${nutrition.fat}</p>
-    <p>Carbohydrates: ${nutrition.carbs}</p>
-    <p>Protein: ${nutrition.protein}</p>
-  `;
+async function getIngredientByID(id) {
+  const url = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/${id}/ingredientWidget.json`;
+  const options = {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': '35c93bcd3bmsh812505908d611c5p1eee90jsn7b90d749f044',
+      'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
+    }
+  };
+
+  try {
+    const response = await fetch(url, options);
+    const result = await response.json();
+    return result.ingredients;
+  } catch (error) {
+    console.error(error);
+  }
 }
 
-searchButton.addEventListener('click', async () => {
-  const recipeName = recipeNameInput.value;
+
+searchButton.addEventListener('click', () => {
+  (async () => {
+    const recipeName = recipeNameInput.value;
   const searchResults = await searchRecipesByName(recipeName);
 
   if (searchResults.length > 0) {
     const firstRecipe = searchResults[0];
     const nutrition = await getNutritionById(firstRecipe.id);
-    displayResult(firstRecipe, nutrition);
+    const ingredient = await getIngredientByID(firstRecipe.id);
+    displayResult(firstRecipe, nutrition, ingredient);
   } else {
-    resultsContainer.innerHTML = '<p>No results found.</p>';
-  }
+    resultsContainer.innerHTML = '<p>No results found.</p>';}
+  })();
 });
 
-function displayResult(recipe, nutrition) {
+function displayResult(recipe, nutrition, ingredients) {
   resultsContainer.innerHTML = `
     <h2>${recipe.title}</h2>
     <h3>Nutrition Values</h3>
@@ -72,6 +83,9 @@ function displayResult(recipe, nutrition) {
     <p>Fat: ${nutrition.fat}</p>
     <p>Carbohydrates: ${nutrition.carbs}</p>
     <p>Protein: ${nutrition.protein}</p>
+    <ul>
+    ${ingredients.map(ingredient => `<li>${ingredient.name}</li>`).join('')}
+    </ul>
   `;
 
   // Prepare the data
@@ -90,25 +104,35 @@ function displayResult(recipe, nutrition) {
 
   svg.selectAll('*').remove(); // Clear the previous chart
 
-  const x = d3.scaleBand()
+  const x = d3.scaleBand() //define the x axis
     .domain(data.map(d => d.name))
     .range([margin.left, width - margin.right])
     .padding(0.1);
 
-  const y = d3.scaleLinear()
+  const y = d3.scaleLinear() //dedine the y axis
     .domain([0, d3.max(data, d => d.value)]).nice()
     .range([height - margin.bottom, margin.top]);
 
-  // Draw the bars
-  svg.append('g')
-    .selectAll('rect')
-    .data(data)
-    .join('rect')
-    .attr('x', d => x(d.name))
-    .attr('y', d => y(d.value))
-    .attr('height', d => y(0) - y(d.value))
-    .attr('width', x.bandwidth())
-    .attr('fill', 'steelblue');
+    svg.append('g')
+      .selectAll('circle')
+      .data(data)
+      .join('circle')
+      .attr('cx', d => x(d.name) + x.bandwidth() / 2)
+      .attr('cy', d => y(d.value))
+      .attr('r', d => Math.sqrt(d.value))
+      .attr('stroke', 'black')
+      .attr('fill', '#69a3b2');
+  
+      // Draw the bars
+  // svg.append('g')
+  //   .selectAll('rect')
+  //   .data(data)
+  //   .join('rect')
+  //   .attr('x', d => x(d.name))
+  //   .attr('y', d => y(d.value))
+  //   .attr('height', d => y(0) - y(d.value)) //Sets the 'height' attribute of each rectangle element based on the value property of each data item. 
+  //   .attr('width', x.bandwidth())
+  //   .attr('fill', 'steelblue');
 
   // Add x-axis
   svg.append('g')
