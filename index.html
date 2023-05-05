@@ -13,32 +13,41 @@
     }
   </script>
   <link rel="stylesheet" href="style.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Signika+Negative:wght@700&display=swap');
+  </style>
+    
 </head>
 
 <body>
-
-  <div class="web"> 
-    <div class="headline">
-      <h1>Search for Recipe</h1>
-      <p>Check Out the Nutrition Value and Ingredients!</p>
+  <div class="container"> 
+    <!-- threejs -->
+    <div class="threejswork">
+      <script type="module" src="/three.js"></script>
     </div>
-    
-    <div class="search-container">
-      <input type="text" id="recipe-name" placeholder="Search for a recipe...">
-      <div id="recipe-dropdown" class="hidden dropdown-menu"></div>
-      <button id="get-nutrition-btn">Get Nutrition</button>
-    </div>
-    <div id="results-container"></div>
-    <script src="https://d3js.org/d3.v7.min.js"></script>
-    <script src="app.js"></script>
 
-    <div id="charts-container"></div>
-    <svg id="nutrition-chart" width="500" height="500" style="border: 1px solid;"></svg>
+    <!-- searchthings -->
+    <div class="web"> 
+      <div class="headline">
+        <p>Programming crash</p>
+        <h1>Search for Recipe</h1>
+        <p>Check Out the Nutrition Value and Ingredients!</p>
+      </div>
+      
+      <div class="search-container">
+        <input type="text" id="recipe-name" placeholder="Search for a recipe...">
+        <div id="recipe-dropdown" class="hidden dropdown-menu"></div>
+        <button id="get-nutrition-btn">Get Nutrition</button>
+      </div>
+      <div id="results-container"></div>
+      <script src="https://d3js.org/d3.v7.min.js"></script>
+      <script src="app.js"></script>
+
+      <div id="charts-container"></div>
+      <svg id="nutrition-chart" width="500" height="500" style="border: 1px solid;"></svg>
+    </div>
+
   </div>
-  <div class="threejswork">
-    <script type="module" src="/three.js"></script>
-  </div>
-  
 </body>
 
 </html>

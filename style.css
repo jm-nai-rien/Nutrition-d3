@@ -4,41 +4,76 @@ html {
 
 body {
     max-width: 50%;
+    margin: 0;
+    padding: 0;
     background-color: #181818;
     font-family: sans-serif;
     line-height: 1.5;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
 }
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
 
   
 h1 {
     margin-bottom: 0px;
+    font-family: 'Signika Negative', sans-serif;
+    font-size: 60px;
 }
 
 h1, h2, h3, ul, p {
     color: #e8e8e8;
 }
 
-.threejswork{
-    /* display: flex;
-    align-content: center;
-    align-items: stretch;
-    justify-content: center; */
+.threejswork {
     position: fixed;
     top: 0;
     left: 0;
     z-index: -1;
+  }
+
+.web {
+    position: relative; /* Ensure the pseudo-element is positioned relative to this element */
+    padding: 5%;
+    border-width: 10px;
+    border-style: solid;
+    border-color: #FE8B40;
+}
+
+.web::before {
+    content: ""; /* This is necessary for the pseudo-element to be generated */
+    background-image: url('Images/Nutritious Food.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute; /* This will make the pseudo-element positioned relative to its parent */
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0; 
+    z-index: -1; 
+    opacity: 0.7; 
+  }
+
+.web::after {
+    content: "";
+    background-color: #343434; /* Set the overlay color */
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1; 
+    opacity: 0.75; 
 }
 
 .not3js {
     margin-top: 10%;
-    /* display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-left: 10%; */
 }
 
 .headline {
@@ -51,13 +86,23 @@ h1, h2, h3, ul, p {
 
 .search-container {
     position: relative;
+    background-color: white;
+    border-radius: 5rem;
+    padding: 8px 10px;
+    display: flex;
+    justify-content: space-between;
   }
 
 #recipe-name {
     min-width: 250px;
     padding: 10px 20px;
-    border-radius: 1rem;
+    border-width: 0px;
+    border-color: white;
 }
+
+#recipe-name:focus {
+    outline: none; /* This is optional, it removes the default outline when the input is in focus */
+  }
 
 .dropdown-menu {
     position: absolute;
@@ -89,9 +134,18 @@ h1, h2, h3, ul, p {
 
 #get-nutrition-btn {
     padding: 10px 20px;
-    border-radius: 1rem;
-    color: rgb(26, 26, 26);
+    border-radius: 5rem;
+    border-width: 0.5px;    
+    color: rgb(0, 0, 0);
+    background-color: #FE8B40;
    }
+
+   #get-nutrition-btn:hover {
+    background-color: #FFD1B4;
+    color: #646464;
+    cursor: pointer;
+  }
+
 
 #nutrition-chart {
     border-color: black;
