@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import {FontLoader} from 'three/addons/loaders/FontLoader.js';
 import {TextGeometry} from 'three/addons/geometries/TextGeometry.js';
 import {OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
 const scene = new THREE.Scene();
 scene.background = new THREE.Color( 0x181818 );
@@ -24,50 +25,22 @@ container.appendChild(renderer.domElement);
 
 
 //Add light source
-const dirLight = new THREE.DirectionalLight( 'white', 3 );//strength
+const dirLight = new THREE.DirectionalLight( 'white', 1 );//strength
 dirLight.position.set( 0, 30, 0 ).normalize();
 scene.add( dirLight );
 
-const ambLight = new THREE.AmbientLight( 'white', 3 );
-ambLight.color.setHSL( 23, 1, 0.5 );
-ambLight.position.set( 1, 30, 0 );
+const ambLight = new THREE.AmbientLight( 'white', 1.3 );
+ambLight.position.set( 1, 1, 0 );
 scene.add( ambLight );
 
 //<!------------ PLANE----------------->
 // Create a large plane
 const planeGeometry = new THREE.PlaneGeometry(100, 100);
 
-// Create gradient canvas texture
-const canvas = document.createElement("canvas");
-const ctx = canvas.getContext("2d");
-canvas.width = 10;
-canvas.height = 100;
-
-const centerX = canvas.width / 2;
-const centerY = canvas.height / 2;
-const maxRadius = Math.sqrt(centerX * centerX + centerY * centerY);
-
-const gradient = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, maxRadius);
-gradient.addColorStop(0, "#FD935A");
-gradient.addColorStop(0.5, "#181818");
-
-ctx.fillStyle = gradient;
-ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-const texture = new THREE.CanvasTexture(canvas);
-// Create the gradient material
-const gradientMaterial = new THREE.MeshBasicMaterial({ map: texture, });
-
-// Create the mesh and add it to the scene
-const mesh = new THREE.Mesh(planeGeometry, gradientMaterial);
-mesh.position.set(0, 0, -10); // Position the plane behind your scene objects
-scene.add(mesh);
-//<!------------ PLANEEnd----------------->
-
 // Render loop required
 const loader = new FontLoader();
 loader.load('https://threejs.org/examples/fonts/helvetiker_regular.typeface.json', function (font) {
-  const geometry = new TextGeometry('FOOD', {
+  const geometry = new TextGeometry('what you\ngonna get?', {
     font: font,
     size: 7,
     height: 2,
@@ -83,6 +56,15 @@ loader.load('https://threejs.org/examples/fonts/helvetiker_regular.typeface.json
     flatShading: false, // Set to true for flat shading, false for smooth shading
     color: 0xc94477
 });
+
+const burgerloader = new GLTFLoader();
+burgerloader.load('Files/burger.glb', (gltf) => {
+    const model = gltf.scene;
+    model.scale.set(7, 7, 7);
+    model.position.set(10, 10, -3);
+    scene.add(model);
+});
+
 
 textMesh = new THREE.Mesh(geometry, material);
 scene.add(textMesh);

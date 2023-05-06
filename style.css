@@ -1,156 +1,156 @@
+*{
+  font-family: 'Signika Negative', sans-serif;
+}
+
 html {
-    box-sizing: border-box;
-  }
+  box-sizing: border-box;
+}
 
 body {
-    max-width: 50%;
-    margin: 0;
-    padding: 0;
-    background-color: #181818;
-    font-family: sans-serif;
-    line-height: 1.5;
+  max-width: 50%;
+  margin: 0;
+  padding: 0;
+  background-color: #181818;
+  font-family: sans-serif;
+  line-height: 1.5;
 
 }
 
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
 
-  
+
 h1 {
-    margin-bottom: 0px;
-    font-family: 'Signika Negative', sans-serif;
-    font-size: 60px;
+  margin-bottom: 0px;
+  font-family: 'Signika Negative', sans-serif;
+  font-size: 60px;
 }
 
 h1, h2, h3, ul, p {
-    color: #e8e8e8;
+  color: #e8e8e8;
 }
 
 .threejswork {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: -1;
-  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
 
 .web {
-    position: relative; /* Ensure the pseudo-element is positioned relative to this element */
-    padding: 5%;
-    border-width: 10px;
-    border-style: solid;
-    border-color: #FE8B40;
+  position: relative; /* Ensure the pseudo-element is positioned relative to this element */
+  padding: 5%;
 }
 
 .web::before {
-    content: ""; /* This is necessary for the pseudo-element to be generated */
-    background-image: url('Images/Nutritious Food.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    position: absolute; /* This will make the pseudo-element positioned relative to its parent */
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0; 
-    z-index: -1; 
-    opacity: 0.7; 
-  }
+  content: ""; /* This is necessary for the pseudo-element to be generated */
+  background-image: url('Files/Nutritious Food.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute; /* This will make the pseudo-element positioned relative to its parent */
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0; 
+  z-index: -1; 
+  opacity: 0.7; 
+}
 
 .web::after {
-    content: "";
-    background-color: #343434; /* Set the overlay color */
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: -1; 
-    opacity: 0.75; 
+  content: "";
+  background-color: #343434; /* Set the overlay color */
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1; 
+  opacity: 0.75; 
 }
 
 .not3js {
-    margin-top: 10%;
+  margin-top: 10%;
 }
 
 .headline {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
 }
 
 .search-container {
-    position: relative;
-    background-color: white;
-    border-radius: 5rem;
-    padding: 8px 10px;
-    display: flex;
-    justify-content: space-between;
-  }
+  position: relative;
+  background-color: white;
+  border-radius: 5rem;
+  padding: 8px 10px;
+  display: flex;
+  justify-content: space-between;
+}
 
 #recipe-name {
-    min-width: 250px;
-    padding: 10px 20px;
-    border-width: 0px;
-    border-color: white;
+  min-width: 250px;
+  padding: 10px 20px;
+  border-width: 0px;
+  border-color: white;
 }
 
 #recipe-name:focus {
-    outline: none; /* This is optional, it removes the default outline when the input is in focus */
-  }
+  outline: none; /* This is optional, it removes the default outline when the input is in focus */
+}
 
 .dropdown-menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    z-index: 1;
-    background: white;
-    border-width: 0.5px;
-    border-radius: 1rem;
-    border-color: rgb(186, 186, 186);
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.109);
-    max-height: 200px;
-    overflow-y: auto;
-  }
-  
- .dropdown-menu div {
-    padding: 5px;
-    cursor: pointer;
-  }
-  
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  background: white;
+  border-width: 0.5px;
+  border-radius: 1rem;
+  border-color: rgb(186, 186, 186);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.109);
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.dropdown-menu div {
+  padding: 5px;
+  cursor: pointer;
+}
+
 .dropdown-menu div:hover {
-    background-color: #f0f0f0;
-  }
-  
+  background-color: #f0f0f0;
+}
+
 .hidden {
-    display: none;
-  }
+  display: none;
+}
 
 #get-nutrition-btn {
-    padding: 10px 20px;
-    border-radius: 5rem;
-    border-width: 0.5px;    
-    color: rgb(0, 0, 0);
-    background-color: #FE8B40;
-   }
+  padding: 10px 20px;
+  border-radius: 5rem;
+  border-width: 0.5px;    
+  color: rgb(0, 0, 0);
+  background-color: #FE8B40;
+ }
 
-   #get-nutrition-btn:hover {
-    background-color: #FFD1B4;
-    color: #646464;
-    cursor: pointer;
-  }
+ #get-nutrition-btn:hover {
+  background-color: #FFD1B4;
+  color: #646464;
+  cursor: pointer;
+}
 
 
 #nutrition-chart {
-    border-color: black;
-    border-width: 1px;
-    margin-top: 2rem;
-    background-color: #f0f0f0;
-    border-radius: 1rem;
+  border-color: rgba(0, 0, 0, 0);
+  border-width: 0px;
+  margin-top: 2rem;
+  border-radius: 1rem;
 }

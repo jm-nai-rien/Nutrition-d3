@@ -168,10 +168,10 @@ function displayResult(recipe, nutrition, ingredients) {
   resultsContainer.innerHTML = `
     <h2>${recipe.title}</h2>
     <h3>Nutrition Values</h3>
-    <p>Calories: ${nutrition.calories}</p>
-    <p>Fat: ${nutrition.fat}</p>
-    <p>Carbohydrates: ${nutrition.carbs}</p>
-    <p>Protein: ${nutrition.protein}</p>
+    <p>${nutrition.calories} Calories</p>
+    <p>${nutrition.fat} Fat</p>
+    <p>${nutrition.carbs} Carbohydrates</p>
+    <p>${nutrition.protein} Protein</p>
     <h3>Ingredients</h3>
     <ul>
     ${ingredients.map(ingredient => `<li>${ingredient.name}</li>`).join('')}
