@@ -211,6 +211,17 @@ const color = d3.scaleOrdinal()
   .range(d3.schemeCategory10);
 
 // Draw the circles
+// Draw the circles
+svg.selectAll('circle')
+  .data(nodes)
+  .join('circle')
+  .attr('cx', d => d.x)
+  .attr('cy', d => d.y)
+  .attr('r', d => d.r)
+  .attr('fill', d => d.data.name ? color(d.data.name) : 'none')
+  .attr('stroke', d => d.children ? 'none' : 'black');
+
+// Add text labels
 svg.selectAll('text')
   .data(nodes.filter(d => !d.children))
   .join('text')
