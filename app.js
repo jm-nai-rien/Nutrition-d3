@@ -168,7 +168,7 @@ function displayResult(recipe, nutrition, ingredients) {
   resultsContainer.innerHTML = `
     <h2>${recipe.title}</h2>
     <h3>Nutrition Values</h3>
-    <p>${nutrition.calories} Calories</p>
+    <p>${nutrition.calories} Total Calories</p>
     <p>${nutrition.fat} Fat</p>
     <p>${nutrition.carbs} Carbohydrates</p>
     <p>${nutrition.protein} Protein</p>
@@ -180,7 +180,7 @@ function displayResult(recipe, nutrition, ingredients) {
 
   // Prepare the data
 const data = [
-  {name: 'Calories', value: parseFloat(nutrition.calories)},
+//   {name: 'Calories', value: parseFloat(nutrition.calories)},
   {name: 'Fat', value: parseFloat(nutrition.fat) * 9},
   {name: 'Carbohydrates', value: parseFloat(nutrition.carbs) * 4},
   {name: 'Protein', value: parseFloat(nutrition.protein) * 4}
