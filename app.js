@@ -211,22 +211,23 @@ const color = d3.scaleOrdinal()
   .range(d3.schemeCategory10);
 
 // Draw the circles
-svg.selectAll('circle')
-  .data(nodes)
-  .join('circle')
-  .attr('cx', d => d.x)
-  .attr('cy', d => d.y)
-  .attr('r', d => d.r)
-  .attr('fill', d => d.data.name ? color(d.data.name) : 'none')
-  .attr('stroke', d => d.children ? 'none' : 'black');
-
-// Add text labels
 svg.selectAll('text')
   .data(nodes.filter(d => !d.children))
   .join('text')
+  .attr('class', 'name')
   .attr('x', d => d.x)
   .attr('y', d => d.y)
   .attr('text-anchor', 'middle')
   .attr('dominant-baseline', 'central')
   .text(d => d.data.name);
+
+svg.selectAll('text.value')
+.data(nodes.filter(d => !d.children))
+.join('text')
+.attr('class', 'value')
+.attr('x', d => d.x)
+.attr('y', d => d.y + 20) // Adjust the y position to display the value below the name
+.attr('text-anchor', 'middle')
+.attr('dominant-baseline', 'central')
+.text(d => `${d.data.value} calories`);
 }
